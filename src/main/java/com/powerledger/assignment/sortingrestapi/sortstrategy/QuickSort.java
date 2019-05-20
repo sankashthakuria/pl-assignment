@@ -1,14 +1,16 @@
-package com.powerledger.assignment.sortingrestapi.service;
+package com.powerledger.assignment.sortingrestapi.sortstrategy;
 
-import org.springframework.stereotype.Component;
+import com.powerledger.assignment.sortingrestapi.annotation.SortingStrategy;
+import com.powerledger.assignment.sortingrestapi.model.ApiResponse;
+import com.powerledger.assignment.sortingrestapi.model.ComplexityInfo;
 
-import static com.powerledger.assignment.sortingrestapi.service.SortUtils.less;
-import static com.powerledger.assignment.sortingrestapi.service.SortUtils.swap;
+import static com.powerledger.assignment.sortingrestapi.sortstrategy.SortUtils.less;
+import static com.powerledger.assignment.sortingrestapi.sortstrategy.SortUtils.swap;
 
 /**
  * Created by @author Sankash on 5/10/2019
  */
-@Component
+@SortingStrategy("quick")
 public class QuickSort implements Sortable {
 
     /**
@@ -81,5 +83,20 @@ public class QuickSort implements Sortable {
     public <T extends Comparable<T>> T[] sort(T[] array) {
         doSort(array, 0, array.length - 1);
         return array;
+    }
+
+    @Override
+    public <T extends Comparable> ApiResponse performSort(T[] array){
+        return  ApiResponse.builder()
+                .array(sort(array))
+                .complexityInfo(
+                        ComplexityInfo.builder()
+                                .averageComplexity("O(n log n)")
+                                .bestComplexity("O(n log n)")
+                                .worstComplexity("O(n log n)")
+                                .spaceComplexity("O(n) in worst case and O(log n) in average case")
+                                .build()
+                )
+                .build();
     }
 }

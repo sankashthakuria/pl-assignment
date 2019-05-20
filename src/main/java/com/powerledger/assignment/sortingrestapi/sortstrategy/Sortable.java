@@ -1,4 +1,6 @@
-package com.powerledger.assignment.sortingrestapi.service;
+package com.powerledger.assignment.sortingrestapi.sortstrategy;
+
+import com.powerledger.assignment.sortingrestapi.model.ApiResponse;
 
 /**
  * The common interface of most sorting algorithms
@@ -15,10 +17,9 @@ public interface Sortable {
      */
     <T extends Comparable<T>> T[] sort(T[] unsorted);
 
-    /**
-     * Auxiliary method for algorithms what wanted to work with lists from JCF
-     *
-     * @param unsorted - a list should be sorted
-     * @return a sorted list
-     */
+
+
+    default public <T extends Comparable> ApiResponse performSort(T[] array){
+        return  ApiResponse.builder().array(sort(array)).build();
+    }
 }

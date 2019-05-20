@@ -1,6 +1,6 @@
 package com.powerledger.assignment.sortingrestapi.unittests;
 
-import com.powerledger.assignment.sortingrestapi.service.BubbleSort;
+import com.powerledger.assignment.sortingrestapi.sortstrategy.BubbleSort;
 
 /**
  * Created by @author Sankash on 5/10/2019

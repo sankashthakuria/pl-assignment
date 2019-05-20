@@ -1,6 +1,6 @@
 package com.powerledger.assignment.sortingrestapi.unittests;
 
-import com.powerledger.assignment.sortingrestapi.service.ShellSort;
+import com.powerledger.assignment.sortingrestapi.sortstrategy.ShellSort;
 
 /**
  * Created by @author Sankash on 5/10/2019

@@ -1,11 +1,13 @@
-package com.powerledger.assignment.sortingrestapi.service;
+package com.powerledger.assignment.sortingrestapi.sortstrategy;
 
-import org.springframework.stereotype.Component;
+import com.powerledger.assignment.sortingrestapi.annotation.SortingStrategy;
+import com.powerledger.assignment.sortingrestapi.model.ApiResponse;
+import com.powerledger.assignment.sortingrestapi.model.ComplexityInfo;
 
 /**
  * Created by @author Sankash on 5/10/2019
  */
-@Component
+@SortingStrategy("merge")
 public class MergeSort implements Sortable {
 
     /**
@@ -88,5 +90,20 @@ public class MergeSort implements Sortable {
         T[] tmp = (T[]) new Comparable[unsorted.length];
         doSort(unsorted, tmp, 0, unsorted.length - 1);
         return unsorted;
+    }
+
+    @Override
+    public <T extends Comparable> ApiResponse performSort(T[] array){
+        return  ApiResponse.builder()
+                .array(sort(array))
+                .complexityInfo(
+                        ComplexityInfo.builder()
+                                .averageComplexity("O(n log n)")
+                                .bestComplexity("O(n log n)")
+                                .worstComplexity("O(n log n)")
+                                .spaceComplexity("O(n)")
+                                .build()
+                )
+                .build();
     }
 }

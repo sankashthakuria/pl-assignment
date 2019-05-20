@@ -6,14 +6,16 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * Created by @author Sankash on 5/11/2019
+ * Created by @author Sankash on 5/13/2019
  */
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Builder
-public class ApiResponse<T extends Comparable> {
-        private ComplexityInfo complexityInfo;
-        private T array[];
+public class ComplexityInfo {
+    private String spaceComplexity;
+    private String averageComplexity;
+    private String worstComplexity;
+    private String bestComplexity;
 }

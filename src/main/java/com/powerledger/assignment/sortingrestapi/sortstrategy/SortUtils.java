@@ -1,4 +1,4 @@
-package com.powerledger.assignment.sortingrestapi.service;
+package com.powerledger.assignment.sortingrestapi.sortstrategy;
 
 import java.util.Arrays;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.powerledger.assignment.sortingrestapi.service;
+package com.powerledger.assignment.sortingrestapi.sortstrategy;
 
 /**
  * Created by @author Sankash on 5/11/2019

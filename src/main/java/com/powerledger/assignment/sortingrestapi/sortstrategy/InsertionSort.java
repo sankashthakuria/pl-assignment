@@ -1,13 +1,15 @@
-package com.powerledger.assignment.sortingrestapi.service;
+package com.powerledger.assignment.sortingrestapi.sortstrategy;
 
-import org.springframework.stereotype.Component;
+import com.powerledger.assignment.sortingrestapi.annotation.SortingStrategy;
+import com.powerledger.assignment.sortingrestapi.model.ApiResponse;
+import com.powerledger.assignment.sortingrestapi.model.ComplexityInfo;
 
-import static com.powerledger.assignment.sortingrestapi.service.SortUtils.less;
+import static com.powerledger.assignment.sortingrestapi.sortstrategy.SortUtils.less;
 
 /**
  * Created by @author Sankash on 5/10/2019
  */
-@Component
+@SortingStrategy("insertion")
 public class InsertionSort implements Sortable {
     /**
      * This method implements the Generic Insertion Sort
@@ -46,5 +48,20 @@ public class InsertionSort implements Sortable {
             array[i + 1] = key;
         }
         return array;
+    }
+
+    @Override
+    public <T extends Comparable> ApiResponse performSort(T[] array){
+        return  ApiResponse.builder()
+                .array(sort(array))
+                .complexityInfo(
+                        ComplexityInfo.builder()
+                                .averageComplexity("O(n^2)")
+                                .bestComplexity("O(n)")
+                                .worstComplexity("O(n^2)")
+                                .spaceComplexity("O(1)")
+                                .build()
+                )
+                .build();
     }
 }

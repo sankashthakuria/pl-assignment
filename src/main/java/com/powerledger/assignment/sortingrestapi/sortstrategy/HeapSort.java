@@ -1,18 +1,20 @@
-package com.powerledger.assignment.sortingrestapi.service;
+package com.powerledger.assignment.sortingrestapi.sortstrategy;
 
-import org.springframework.stereotype.Component;
+import com.powerledger.assignment.sortingrestapi.annotation.SortingStrategy;
+import com.powerledger.assignment.sortingrestapi.model.ApiResponse;
+import com.powerledger.assignment.sortingrestapi.model.ComplexityInfo;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.powerledger.assignment.sortingrestapi.service.SortUtils.less;
-import static com.powerledger.assignment.sortingrestapi.service.SortUtils.swap;
+import static com.powerledger.assignment.sortingrestapi.sortstrategy.SortUtils.less;
+import static com.powerledger.assignment.sortingrestapi.sortstrategy.SortUtils.swap;
 
 /**
  * Created by @author Sankash on 5/11/2019
  */
-@Component
+@SortingStrategy("heap")
 public class HeapSort implements Sortable {
     /**
      * This method implements Generic Shell Sort.
@@ -131,6 +133,21 @@ public class HeapSort implements Sortable {
         }
 
 
+    }
+
+    @Override
+    public <T extends Comparable> ApiResponse performSort(T[] array){
+        return  ApiResponse.builder()
+                .array(sort(array))
+                .complexityInfo(
+                        ComplexityInfo.builder()
+                                .averageComplexity("O(n log n)")
+                                .bestComplexity("O(n log n)")
+                                .worstComplexity("O(n log n)")
+                                .spaceComplexity("O(1)")
+                                .build()
+                )
+                .build();
     }
 
 

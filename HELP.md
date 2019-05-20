@@ -26,4 +26,27 @@ mvn test
 
 This sample uses Swagger to provide the API documentation. You can use the same page to send requests to the API
 When the application has started please go to [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html) 
-![Image of swagger generated via Spring Boot](src/main/resources/Capture1.JPG) 
+![Image of swagger generated via Spring Boot](src/main/resources/Capture.JPG)
+
+### Sending requests to the app
+
+You can send a sample request like so
+
+Bubble Sort
+```shell
+$ curl -X GET --header 'Accept: application/json' 'http://localhost:8080/api/v1/bubble?listOfItemsToSort=4,3,2,1'
+```
+
+Heap Sort
+```shell
+$ curl -X GET --header 'Accept: application/json' 'http://localhost:8080/api/v1/heap?listOfItemsToSort=4,3,2,1'
+```
+The url is of the form GET /api/v1/{strategy}/<numbers separated by commas>.
+The strategy param must be one of the following:
+ * bubble
+ * heap
+ * insertion
+ * merge
+ * quick
+ * selection
+ * shell

@@ -1,6 +1,6 @@
 package com.powerledger.assignment.sortingrestapi.unittests;
 
-import com.powerledger.assignment.sortingrestapi.service.HeapSort;
+import com.powerledger.assignment.sortingrestapi.sortstrategy.HeapSort;
 
 /**
  * Created by @author Sankash on 5/11/2019
